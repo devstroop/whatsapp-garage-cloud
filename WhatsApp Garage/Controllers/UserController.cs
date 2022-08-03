@@ -155,5 +155,23 @@ namespace Server.Controllers
             return RedirectToAction("Login");
         }
 
+
+
+        // Login
+        public IActionResult Authentication()
+        {
+            var token = HttpContext.Session.GetString("_UserToken");
+
+            if (token != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "User");
+            }
+        }
+
+
     }
 }
