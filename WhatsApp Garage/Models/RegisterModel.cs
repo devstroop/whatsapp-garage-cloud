@@ -6,20 +6,20 @@ namespace Server.Models
     {
         [Display(Name = "Full Name")]
         [Required(ErrorMessage = "Name is required.")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [Display(Name = "Email")]
         [Required(ErrorMessage = "Email is required.")]
         [EmailAddress]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         [Display(Name = "Password")]
         [Required(ErrorMessage = "Password is required.")]
-        public string Password { get; set; }
+        public string? Password { get; set; }
 
         [Display(Name = "Confirm Password")]
         [Required(ErrorMessage = "Confirm Password is required.")]
         [Compare("Password", ErrorMessage = "Password and Confirm Password must match.")]
-        public string ConfirmPassword { get; set; }
+        public string? ConfirmPassword { get; set; }
     }
 }

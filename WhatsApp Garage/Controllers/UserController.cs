@@ -55,8 +55,8 @@ namespace Server.Controllers
             }
             catch (FirebaseAuthException ex) 
             {
-                var firebaseEx = JsonConvert.DeserializeObject<FirebaseError>(ex.ResponseData);
-                ModelState.AddModelError(String.Empty, firebaseEx!.error.message);
+                FirebaseError? firebaseEx = JsonConvert.DeserializeObject<FirebaseError>(ex.ResponseData);
+                ModelState.AddModelError(String.Empty, firebaseEx!.error!.message!);
                 return View(registerModel);
             }
 
@@ -88,8 +88,8 @@ namespace Server.Controllers
             }
             catch (FirebaseAuthException ex)
             {
-                var firebaseEx = JsonConvert.DeserializeObject<FirebaseError>(ex.ResponseData);
-                ModelState.AddModelError(String.Empty, firebaseEx!.error.message);
+                FirebaseError? firebaseEx = JsonConvert.DeserializeObject<FirebaseError>(ex.ResponseData);
+                ModelState.AddModelError(String.Empty, firebaseEx!.error!.message!);
                 return View(loginModel);
             }
 
@@ -112,13 +112,13 @@ namespace Server.Controllers
             }
             catch (FirebaseAuthException ex)
             {
-                var firebaseEx = JsonConvert.DeserializeObject<FirebaseError>(ex.ResponseData);
-                ModelState.AddModelError(String.Empty, firebaseEx!.error.message);
+                FirebaseError? firebaseEx = JsonConvert.DeserializeObject<FirebaseError>(ex.ResponseData);
+                ModelState.AddModelError(String.Empty, firebaseEx!.error!.message!);
                 return View(forgotPasswordModel);
             }
             catch(HttpRequestException ex)
             {
-                ModelState.AddModelError(String.Empty, "INVALID_EMAIL");
+                ModelState.AddModelError(String.Empty, ex.Message);
                 return View(forgotPasswordModel);
             }
             return View();
