@@ -49,8 +49,8 @@ namespace Server.Controllers
             }
             catch (FirebaseAuthException ex)
             {
-                var firebaseEx = JsonConvert.DeserializeObject<FirebaseError>(ex.ResponseData);
-                ModelState.AddModelError(String.Empty, firebaseEx!.error.message);
+                FirebaseError? firebaseEx = JsonConvert.DeserializeObject<FirebaseError>(ex.ResponseData);
+                ModelState.AddModelError(String.Empty, firebaseEx!.error!.message!);
                 return View(loginModel);
             }
 
