@@ -5,4 +5,4 @@ services:
     image: ${DOCKER_REGISTRY-}whatsappgarage
     build:
       context: .
-      dockerfile: 'WhatsApp Garage/Dockerfile'
+      dockerfile: '.\\WhatsApp Garage\\Dockerfile'
